@@ -1,0 +1,46 @@
+﻿<Window x:Class="InterpolacionNumericaNewton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterpolacionNumericaNewton"
+        mc:Ignorable="d"
+        Title="Interpolación numérica por el método de Newton" Height="450" Width="800"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Valores" Grid.Column="0" Grid.Row="0" BorderBrush="Black" Margin="5" Padding="5">
+            <WrapPanel>
+                <TextBlock Text="Xi = "></TextBlock>
+                <TextBox x:Name="TxtValorX0" Width="50" Margin="10,0" IsReadOnly="False"></TextBox>                
+                <TextBlock Text="F(x) = "></TextBlock>
+                <TextBox Text="2sin(x) - (x^2 / 10)" Width="120" Margin="10,0" IsReadOnly="True"></TextBox>
+                <TextBlock Text="F'(x) = "></TextBlock>
+                <TextBox Text="2cos(x) - x/5)" Width="120" Margin="10,0" IsReadOnly="True"></TextBox>
+                <TextBlock Text="F''(x) = "></TextBlock>
+                <TextBox Text="-2sin(x) - 1/5" Width="120" Margin="10,0" IsReadOnly="True"></TextBox>
+                <Button x:Name="BtnCalcular" Padding="5,0" Content="Calcular" Margin="10,0" UseLayoutRounding="False" Click="BtnCalcular_Click"></Button>
+                <Button x:Name="BtnLimpiar" Padding="5,0" Content="Limpiar" Click="BtnLimpiar_Click"></Button>
+            </WrapPanel>
+        </GroupBox>
+        <GroupBox Header="Iteraciones" Grid.Column="0" Grid.Row="1" BorderBrush="Black" Margin="5" Padding="5">
+            <DataGrid x:Name="DgIteraciones" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="i" Binding="{Binding I}" CanUserSort="False" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="xi" Binding="{Binding Xi}" CanUserSort="False" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="f'(xi)" Binding="{Binding FPXi}" CanUserSort="False" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="f''(xi)" Binding="{Binding FPPXi}" CanUserSort="False" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="xi+1" Binding="{Binding XiMa1}" CanUserSort="False" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Error" Binding="{Binding Error}" CanUserSort="False" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>
